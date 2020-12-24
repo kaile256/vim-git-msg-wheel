@@ -39,7 +39,10 @@ function! s:printRecentGitLog()
 endfunction
 
 function! LastCommitMsg()
-    call complete(col('.'), s:commitMessages)
+    let line = getline('.')
+    let candidates = filter(deepcopy(s:commitMessages), 'v:val =~# "^". line')
+    let matches = map(deepcopy(candidates), 'substitute(v:val, line, "", "")')
+    call complete(col('.'), matches)
     return ''
 endfunc
 
