@@ -8,7 +8,7 @@ let g:git_msg_wheel_list_show = get(g:, 'git_msg_wheel_list_show', 1)
 
 augroup vim_autocomplete_recent_git_commit_message
     autocmd FileType gitcommit call s:printRecentGitLog()
-    execute "autocmd FileType gitcommit inoremap " . g:git_msg_wheel_key . " <C-r>=LastCommitMsg()<CR>"
+    execute "autocmd FileType gitcommit inoremap <silent><nowait><buffer> " . g:git_msg_wheel_key . " <C-r>=LastCommitMsg()<CR>"
 augroup END
 
 let s:executed = 0
